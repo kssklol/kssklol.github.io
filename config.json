@@ -8,5 +8,9 @@
     "themeMode":"fix",
     "dayTheme":"dark",
     "nightTheme":"dark-blue",
+    "commentLabelColor":"#006b75",
+"yearColorList":["#bc4c00", "#0969da", "#1f883d", "#A333D0"],
+    "singlePage":["about"],
+    "onePageListNum":5,
     "startSite":"06/25/2024"
 }
