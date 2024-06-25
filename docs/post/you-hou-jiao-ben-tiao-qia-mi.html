@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark-blue" data-light-theme="dark" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/165453323?s=400&u=314ab72b21552d28d4b8a4085563d3486dc017a0&v=4">
+<meta name="description" content="```json
+// ==UserScript==
+// @name         [Working] shark json
+// @namespace    http://tampermonkey.net/
+// @homepageURL  https://bypass.city
+// @description  just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)
+// @author       Discord: varram#6209
+// @match        *://*.linkvertise.com/*
+// @match        *://*.linkvertise.net/*
+// @match        *://*.link-to.net/*
+// @match        *://bypass.city/*
+// @match        http://localhost:3000/*
+// @exclude      *://publisher.linkvertise.com/*
+// @exclude      *://linkvertise.com
+// @exclude      *://linkvertise.com/search*
+// @exclude      *://blog.linkvertise.com
+// @exclude      *://blog.linkvertise.com/*
+// @exclude      https://linkvertise.com/assets/vendor/thinksuggest.html
+// @exclude      https://linkvertise.com/assets/vendor/*
+// @exclude      https://publisher.linkvertise.com/*
+// @exclude      *://link-mutation.linkvertise.com/*
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_deleteValue
+// @grant        GM_addStyle
+// @grant        GM.getValue
+// @grant        GM_xmlhttpRequest
+// @grant        GM.setValue
+// @grant        GM.deleteValue
+// @version      11.0.6
+// @author       varram
+// @connect      bypass.city
+// @icon         https://bypass.city/favicon.ico
+// ==/UserScript==
+ 
+ 
+/* 
+release: sk json, 11/9/2023, 8:55:24 PM
+additional copyright/license info:
+© All Rights Reserved
+ 
+Linkvertise Bypass © 2023 by shark, suspect & bypass.city team
+*/
+ 
+(() => {
+  // src/bypass-city.ts
+  var bypassCityListener = async () => {
+    if (window.location.hostname !== 'bypass.city' && window.location.hostname !== 'localhost') {
+      return;
+    }
+    injectScriptInfo();
+    window.addEventListener('bypassComplete', async (event) => {
+      const data = event.detail;
+      console.log('bypassMessage', data);
+      GM_setValue('bypass.data', data);
+      window.open(data.url, '_self', 'noopener,noreferrer');
+    });
+  };
+  var injectScriptInfo = () => {
+    const injectJs = `
+    window.scriptInfo = {
+        version: '${'11.0.6'}',
+        buildTime: '${'11/9/2023, 7:39:06 PM'}',
+        branch: '${'release'}',
+        release: '${'5c96a51'}',
+        installed: true,
+    }`;
+    const script = document.createElement('script');
+    script.textContent = injectJs;
+    document.body.appendChild(script);
+  };
+ 
+  // src/notify.scss
+  var notify_default = `.notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  margin: 10px;
+  padding: 10px;
+  padding-right: 20px;
+  background-color: #25262b;
+  color: white;
+  transition: opacity 0.6s; /* 600ms to fade out */
+  z-index: 4000000;
+  border-radius: 10px; /* Rounded border */
+  border: 2px solid #3b5bdb;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+ 
+.notification .grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+ 
+.notification .links {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+ 
+.notification .links span {
+  padding-bottom: 4px;
+  opacity: 0.7;
+}
+ 
+.notification .links a, .notification .links span {
+  display: block;
+  color: white;
+  font-size: 0.8rem;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+ 
+.grid-item img {
+  margin-top: 15px;
+  margin-right: 5px;
+  width: 32px;
+}
+ 
+.grid-item h3 {
+  padding-top: 10px;
+  padding-bottom: 3px;
+  font-size: 1.5rem;
+  color: white;
+}
+ 
+.grid-item p {
+  font-style: italic;
+  font-size: 1rem;
+  color: white;
+}
+.grid-item p a {
+  opacity: 1;
+  font-weight: 600;
+  text-decoration: underline !important;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+ 
+.grid-item h3, .grid-item p {
+  margin: 0;
+}
+ 
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #3b5bdb;
+  }
+  to {
+    box-shadow: 0 0 20px #3b5bdb;
+  }
+}`;
+ 
+  // src/notify-element.html
+  var notify_element_default = '<div id='bypass-notification' class='notification'>\n    <div class='grid-container'>\n      <div class='grid-item'>\n        <img height='32' src='https://bypass.city/images/android-chrome-192x192.png' alt='Notification'>\n      </div>\n      <div class='grid-item'>\n        <h3 id='title'></h3>\n        <p>\n            <span id='text'></span>\n            <a id='help' href='https://discord.gg/tX8G9G5BMV'>Get Support on our Discord</a>\n        </p>\n      </div>\n    </div>\n   \n      <div id='links' class='links'>\n        <span id='version'>Release</span>\n        <span>&#8226;</span>\n        <a  href='https://discord.gg/tX8G9G5BMV'>Get Support</a>\n        <span>&#8226;</span>\n        <a href='https://bypass.city/privacy'>Privacy Policy</a>\n      \n      </div>\n  </div>\n  ';
+ 
+  // src/notify.ts
+  var BypassElement = class extends HTMLElement {
+    static get observedAttributes() {
+      return ['text', 'title', 'is-help'];
+    }
+    constructor() {
+      super();
+      const shadow = this.attachShadow({ mode: 'open' });
+      const style = document.createElement('style');
+      style.textContent = notify_default;
+      const div = document.createElement('div');
+      div.innerHTML = notify_element_default;
+      shadow.appendChild(style);
+      shadow.appendChild(div);
+      shadow.getElementById('version').innerText = '鲨 js 1.0.0';
+    }
+    connectedCallback() {
+      this.updateContent();
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+      this.updateContent();
+    }
+    updateContent() {
+      const text = this.getAttribute('text') || '';
+      const title = this.getAttribute('title') || '';
+      const isHelp = this.hasAttribute('is-help');
+      if (isHelp) {
+        this.shadowRoot.getElementById('links').remove();
+      }
+      this.shadowRoot.getElementById('help').style.display = isHelp ? 'block' : 'none';
+      this.shadowRoot.querySelector('#title').textContent = title;
+      this.shadowRoot.querySelector('#text').textContent = text;
+    }
+  };
+  customElements.define('bypass-notification', BypassElement);
+  var notify = ({ text, title, isHelp }) => {
+    const titleContent = title || '跳验证正在加载...';
+    const textContent = text || '稍等，会有一个网页跳转';
+    const notificationElement = document.createElement('bypass-notification');
+    notificationElement.setAttribute('title', titleContent);
+    notificationElement.setAttribute('text', textContent);
+    if (isHelp) {
+      notificationElement.setAttribute('is-help', 'true');
+    }
+    document.body.appendChild(notificationElement);
+  };
+ 
+  // src/fetch.ts
+  var jsonFetch = async (url, options) => {
+    return new Promise((resolve, reject) => {
+      GM_xmlhttpRequest({
+        method: options.method,
+        data: options.data ? JSON.stringify(options.data) : void 0,
+        headers: options.headers,
+        url,
+        onload: (response) => {
+          if (response.responseText && typeof response.responseText === 'string') {
+            try {
+              const data = JSON.parse(response.responseText);
+              resolve(data);
+            } catch (e) {
+              reject();
+            }
+          } else {
+            reject();
+          }
+        },
+        onerror: reject,
+        ontimeout: reject,
+        onabort: reject,
+        timeout: 5e3
+      });
+    });
+  };
+ 
+  // src/ping.ts
+  var ping = async () => {
+    try {
+      const data = await jsonFetch(`${'https://bypass.city'}/.well-known/ping.json`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      return data.ping;
+    } catch (e) {
+      notify({
+        title: '无法访问服务器！',
+        isHelp: true
+      });
+      return false;
+    }
+  };
+ 
+  // src/utils.ts
+  var sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+ 
+  // src/linkvertise.ts
+  var linkvertiseListener = async () => {
+    if (!matchLinkvertise(window.location.href)) {
+      return;
+    }
+    const bypassData = GM_getValue('bypass.data');
+    if (bypassData) {
+      if (window.location.href.includes('linkvertise.com/48193/')) {
+        notify({
+          title: '发现KRNL!',
+          text: '绕过krnl，请等待15秒\n以避免被列入黑名单！'
+        });
+        await sleep(15e3);
+      } else {
+        notify({});
+        await sleep(2e3);
+      }
+      const targetUrl = bypassData.bypassData;
+      GM_deleteValue('bypass.data');
+      window.open(targetUrl, '_self');
+    } else {
+      const testConnectivity = await ping();
+      if (testConnectivity) {
+        notify({});
+        await sleep(2e3);
+        const bypassCityUrl = new URL(`${'https://bypass.city'}/bypass`);
+        bypassCityUrl.searchParams.set('bypass', encodeURIComponent(window.location.href));
+        bypassCityUrl.searchParams.set('userscript', 'true');
+        bypassCityUrl.searchParams.set('userscript-version', '11.0.6');
+        window.open(bypassCityUrl.href, '_self');
+      }
+    }
+  };
+  var matchLinkvertise = (url) => {
+    const regex = /https?:\/\/(linkvertise\.(com|download)|(link-(center|target|hub|to)|direct-link|file-link)\.net)/i;
+    return regex.test(url) && !url.startsWith('https://linkvertise.com/profile') && !url.startsWith('https://linkvertise.com/login');
+  };
+ 
+  // src/main.ts
+  (async () => {
+    console.info('Linkvertise Userscript', '鲨 js 1.0.0', window.location.href);
+    await bypassCityListener();
+    await linkvertiseListener();
+  })();
+})();
+```。">
+<meta property="og:title" content="油猴脚本跳卡密">
+<meta property="og:description" content="```json
+// ==UserScript==
+// @name         [Working] shark json
+// @namespace    http://tampermonkey.net/
+// @homepageURL  https://bypass.city
+// @description  just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)
+// @author       Discord: varram#6209
+// @match        *://*.linkvertise.com/*
+// @match        *://*.linkvertise.net/*
+// @match        *://*.link-to.net/*
+// @match        *://bypass.city/*
+// @match        http://localhost:3000/*
+// @exclude      *://publisher.linkvertise.com/*
+// @exclude      *://linkvertise.com
+// @exclude      *://linkvertise.com/search*
+// @exclude      *://blog.linkvertise.com
+// @exclude      *://blog.linkvertise.com/*
+// @exclude      https://linkvertise.com/assets/vendor/thinksuggest.html
+// @exclude      https://linkvertise.com/assets/vendor/*
+// @exclude      https://publisher.linkvertise.com/*
+// @exclude      *://link-mutation.linkvertise.com/*
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_deleteValue
+// @grant        GM_addStyle
+// @grant        GM.getValue
+// @grant        GM_xmlhttpRequest
+// @grant        GM.setValue
+// @grant        GM.deleteValue
+// @version      11.0.6
+// @author       varram
+// @connect      bypass.city
+// @icon         https://bypass.city/favicon.ico
+// ==/UserScript==
+ 
+ 
+/* 
+release: sk json, 11/9/2023, 8:55:24 PM
+additional copyright/license info:
+© All Rights Reserved
+ 
+Linkvertise Bypass © 2023 by shark, suspect & bypass.city team
+*/
+ 
+(() => {
+  // src/bypass-city.ts
+  var bypassCityListener = async () => {
+    if (window.location.hostname !== 'bypass.city' && window.location.hostname !== 'localhost') {
+      return;
+    }
+    injectScriptInfo();
+    window.addEventListener('bypassComplete', async (event) => {
+      const data = event.detail;
+      console.log('bypassMessage', data);
+      GM_setValue('bypass.data', data);
+      window.open(data.url, '_self', 'noopener,noreferrer');
+    });
+  };
+  var injectScriptInfo = () => {
+    const injectJs = `
+    window.scriptInfo = {
+        version: '${'11.0.6'}',
+        buildTime: '${'11/9/2023, 7:39:06 PM'}',
+        branch: '${'release'}',
+        release: '${'5c96a51'}',
+        installed: true,
+    }`;
+    const script = document.createElement('script');
+    script.textContent = injectJs;
+    document.body.appendChild(script);
+  };
+ 
+  // src/notify.scss
+  var notify_default = `.notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  margin: 10px;
+  padding: 10px;
+  padding-right: 20px;
+  background-color: #25262b;
+  color: white;
+  transition: opacity 0.6s; /* 600ms to fade out */
+  z-index: 4000000;
+  border-radius: 10px; /* Rounded border */
+  border: 2px solid #3b5bdb;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+ 
+.notification .grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+ 
+.notification .links {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+ 
+.notification .links span {
+  padding-bottom: 4px;
+  opacity: 0.7;
+}
+ 
+.notification .links a, .notification .links span {
+  display: block;
+  color: white;
+  font-size: 0.8rem;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+ 
+.grid-item img {
+  margin-top: 15px;
+  margin-right: 5px;
+  width: 32px;
+}
+ 
+.grid-item h3 {
+  padding-top: 10px;
+  padding-bottom: 3px;
+  font-size: 1.5rem;
+  color: white;
+}
+ 
+.grid-item p {
+  font-style: italic;
+  font-size: 1rem;
+  color: white;
+}
+.grid-item p a {
+  opacity: 1;
+  font-weight: 600;
+  text-decoration: underline !important;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+ 
+.grid-item h3, .grid-item p {
+  margin: 0;
+}
+ 
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #3b5bdb;
+  }
+  to {
+    box-shadow: 0 0 20px #3b5bdb;
+  }
+}`;
+ 
+  // src/notify-element.html
+  var notify_element_default = '<div id='bypass-notification' class='notification'>\n    <div class='grid-container'>\n      <div class='grid-item'>\n        <img height='32' src='https://bypass.city/images/android-chrome-192x192.png' alt='Notification'>\n      </div>\n      <div class='grid-item'>\n        <h3 id='title'></h3>\n        <p>\n            <span id='text'></span>\n            <a id='help' href='https://discord.gg/tX8G9G5BMV'>Get Support on our Discord</a>\n        </p>\n      </div>\n    </div>\n   \n      <div id='links' class='links'>\n        <span id='version'>Release</span>\n        <span>&#8226;</span>\n        <a  href='https://discord.gg/tX8G9G5BMV'>Get Support</a>\n        <span>&#8226;</span>\n        <a href='https://bypass.city/privacy'>Privacy Policy</a>\n      \n      </div>\n  </div>\n  ';
+ 
+  // src/notify.ts
+  var BypassElement = class extends HTMLElement {
+    static get observedAttributes() {
+      return ['text', 'title', 'is-help'];
+    }
+    constructor() {
+      super();
+      const shadow = this.attachShadow({ mode: 'open' });
+      const style = document.createElement('style');
+      style.textContent = notify_default;
+      const div = document.createElement('div');
+      div.innerHTML = notify_element_default;
+      shadow.appendChild(style);
+      shadow.appendChild(div);
+      shadow.getElementById('version').innerText = '鲨 js 1.0.0';
+    }
+    connectedCallback() {
+      this.updateContent();
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+      this.updateContent();
+    }
+    updateContent() {
+      const text = this.getAttribute('text') || '';
+      const title = this.getAttribute('title') || '';
+      const isHelp = this.hasAttribute('is-help');
+      if (isHelp) {
+        this.shadowRoot.getElementById('links').remove();
+      }
+      this.shadowRoot.getElementById('help').style.display = isHelp ? 'block' : 'none';
+      this.shadowRoot.querySelector('#title').textContent = title;
+      this.shadowRoot.querySelector('#text').textContent = text;
+    }
+  };
+  customElements.define('bypass-notification', BypassElement);
+  var notify = ({ text, title, isHelp }) => {
+    const titleContent = title || '跳验证正在加载...';
+    const textContent = text || '稍等，会有一个网页跳转';
+    const notificationElement = document.createElement('bypass-notification');
+    notificationElement.setAttribute('title', titleContent);
+    notificationElement.setAttribute('text', textContent);
+    if (isHelp) {
+      notificationElement.setAttribute('is-help', 'true');
+    }
+    document.body.appendChild(notificationElement);
+  };
+ 
+  // src/fetch.ts
+  var jsonFetch = async (url, options) => {
+    return new Promise((resolve, reject) => {
+      GM_xmlhttpRequest({
+        method: options.method,
+        data: options.data ? JSON.stringify(options.data) : void 0,
+        headers: options.headers,
+        url,
+        onload: (response) => {
+          if (response.responseText && typeof response.responseText === 'string') {
+            try {
+              const data = JSON.parse(response.responseText);
+              resolve(data);
+            } catch (e) {
+              reject();
+            }
+          } else {
+            reject();
+          }
+        },
+        onerror: reject,
+        ontimeout: reject,
+        onabort: reject,
+        timeout: 5e3
+      });
+    });
+  };
+ 
+  // src/ping.ts
+  var ping = async () => {
+    try {
+      const data = await jsonFetch(`${'https://bypass.city'}/.well-known/ping.json`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      return data.ping;
+    } catch (e) {
+      notify({
+        title: '无法访问服务器！',
+        isHelp: true
+      });
+      return false;
+    }
+  };
+ 
+  // src/utils.ts
+  var sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+ 
+  // src/linkvertise.ts
+  var linkvertiseListener = async () => {
+    if (!matchLinkvertise(window.location.href)) {
+      return;
+    }
+    const bypassData = GM_getValue('bypass.data');
+    if (bypassData) {
+      if (window.location.href.includes('linkvertise.com/48193/')) {
+        notify({
+          title: '发现KRNL!',
+          text: '绕过krnl，请等待15秒\n以避免被列入黑名单！'
+        });
+        await sleep(15e3);
+      } else {
+        notify({});
+        await sleep(2e3);
+      }
+      const targetUrl = bypassData.bypassData;
+      GM_deleteValue('bypass.data');
+      window.open(targetUrl, '_self');
+    } else {
+      const testConnectivity = await ping();
+      if (testConnectivity) {
+        notify({});
+        await sleep(2e3);
+        const bypassCityUrl = new URL(`${'https://bypass.city'}/bypass`);
+        bypassCityUrl.searchParams.set('bypass', encodeURIComponent(window.location.href));
+        bypassCityUrl.searchParams.set('userscript', 'true');
+        bypassCityUrl.searchParams.set('userscript-version', '11.0.6');
+        window.open(bypassCityUrl.href, '_self');
+      }
+    }
+  };
+  var matchLinkvertise = (url) => {
+    const regex = /https?:\/\/(linkvertise\.(com|download)|(link-(center|target|hub|to)|direct-link|file-link)\.net)/i;
+    return regex.test(url) && !url.startsWith('https://linkvertise.com/profile') && !url.startsWith('https://linkvertise.com/login');
+  };
+ 
+  // src/main.ts
+  (async () => {
+    console.info('Linkvertise Userscript', '鲨 js 1.0.0', window.location.href);
+    await bypassCityListener();
+    await linkvertiseListener();
+  })();
+})();
+```。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kssklol.github.io/post/you-hou-jiao-ben-tiao-qia-mi.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/165453323?s=400&u=314ab72b21552d28d4b8a4085563d3486dc017a0&v=4">
+<title>油猴脚本跳卡密</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">油猴脚本跳卡密</h1>
+<div class="title-right">
+    <a href="https://kssklol.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/kssklol/kssklol.github.io/issues/7" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题"style="display:none;">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><div class="highlight highlight-source-json"><pre class="notranslate"><span class="pl-ii">// ==UserScript==</span>
+<span class="pl-ii">// @name         [Working] shark json</span>
+<span class="pl-ii">// @namespace    http://tampermonkey.net/</span>
+<span class="pl-ii">// @homepageURL  https://bypass.city</span>
+<span class="pl-ii">// @description  just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)</span>
+<span class="pl-ii">// @author       Discord: varram#6209</span>
+<span class="pl-ii">// @match        *://*.linkvertise.com/*</span>
+<span class="pl-ii">// @match        *://*.linkvertise.net/*</span>
+<span class="pl-ii">// @match        *://*.link-to.net/*</span>
+<span class="pl-ii">// @match        *://bypass.city/*</span>
+<span class="pl-ii">// @match        http://localhost:3000/*</span>
+<span class="pl-ii">// @exclude      *://publisher.linkvertise.com/*</span>
+<span class="pl-ii">// @exclude      *://linkvertise.com</span>
+<span class="pl-ii">// @exclude      *://linkvertise.com/search*</span>
+<span class="pl-ii">// @exclude      *://blog.linkvertise.com</span>
+<span class="pl-ii">// @exclude      *://blog.linkvertise.com/*</span>
+<span class="pl-ii">// @exclude      https://linkvertise.com/assets/vendor/thinksuggest.html</span>
+<span class="pl-ii">// @exclude      https://linkvertise.com/assets/vendor/*</span>
+<span class="pl-ii">// @exclude      https://publisher.linkvertise.com/*</span>
+<span class="pl-ii">// @exclude      *://link-mutation.linkvertise.com/*</span>
+<span class="pl-ii">// @grant        GM_getValue</span>
+<span class="pl-ii">// @grant        GM_setValue</span>
+<span class="pl-ii">// @grant        GM_deleteValue</span>
+<span class="pl-ii">// @grant        GM_addStyle</span>
+<span class="pl-ii">// @grant        GM.getValue</span>
+<span class="pl-ii">// @grant        GM_xmlhttpRequest</span>
+<span class="pl-ii">// @grant        GM.setValue</span>
+<span class="pl-ii">// @grant        GM.deleteValue</span>
+<span class="pl-ii">// @version      11.0.6</span>
+<span class="pl-ii">// @author       varram</span>
+<span class="pl-ii">// @connect      bypass.city</span>
+<span class="pl-ii">// @icon         https://bypass.city/favicon.ico</span>
+<span class="pl-ii">// ==/UserScript==</span>
+ 
+ 
+<span class="pl-ii">/* </span>
+<span class="pl-ii">release: sk json, 11/9/2023, 8:55:24 PM</span>
+<span class="pl-ii">additional copyright/license info:</span>
+<span class="pl-ii">© All Rights Reserved</span>
+ 
+<span class="pl-ii">Linkvertise Bypass © 2023 by shark, suspect &amp; bypass.city team</span>
+<span class="pl-ii">*/</span>
+ 
+<span class="pl-ii">(() =&gt; {</span>
+  <span class="pl-ii">// src/bypass-city.ts</span>
+  <span class="pl-ii">var bypassCityListener = async () =&gt; {</span>
+    <span class="pl-ii">if (window.location.hostname !== "bypass.city" &amp;&amp; window.location.hostname !== "localhost") {</span>
+      <span class="pl-ii">return;</span>
+    <span class="pl-ii">}</span>
+    <span class="pl-ii">injectScriptInfo();</span>
+    <span class="pl-ii">window.addEventListener("bypassComplete", async (event) =&gt; {</span>
+      <span class="pl-ii">const data = event.detail;</span>
+      <span class="pl-ii">console.log("bypassMessage", data);</span>
+      <span class="pl-ii">GM_setValue("bypass.data", data);</span>
+      <span class="pl-ii">window.open(data.url, "_self", "noopener,noreferrer");</span>
+    <span class="pl-ii">});</span>
+  <span class="pl-ii">};</span>
+  <span class="pl-ii">var injectScriptInfo = () =&gt; {</span>
+    <span class="pl-ii">const injectJs = `</span>
+    <span class="pl-ii">window.scriptInfo = {</span>
+        <span class="pl-ii">version: "${"11.0.6"}",</span>
+        <span class="pl-ii">buildTime: "${"11/9/2023, 7:39:06 PM"}",</span>
+        <span class="pl-ii">branch: "${"release"}",</span>
+        <span class="pl-ii">release: "${"5c96a51"}",</span>
+        <span class="pl-ii">installed: true,</span>
+    <span class="pl-ii">}`;</span>
+    <span class="pl-ii">const script = document.createElement("script");</span>
+    <span class="pl-ii">script.textContent = injectJs;</span>
+    <span class="pl-ii">document.body.appendChild(script);</span>
+  <span class="pl-ii">};</span>
+ 
+  <span class="pl-ii">// src/notify.scss</span>
+  <span class="pl-ii">var notify_default = `.notification {</span>
+  <span class="pl-ii">position: fixed;</span>
+  <span class="pl-ii">top: 10px;</span>
+  <span class="pl-ii">right: 10px;</span>
+  <span class="pl-ii">margin: 10px;</span>
+  <span class="pl-ii">padding: 10px;</span>
+  <span class="pl-ii">padding-right: 20px;</span>
+  <span class="pl-ii">background-color: #25262b;</span>
+  <span class="pl-ii">color: white;</span>
+  <span class="pl-ii">transition: opacity 0.6s; /* 600ms to fade out */</span>
+  <span class="pl-ii">z-index: 4000000;</span>
+  <span class="pl-ii">border-radius: 10px; /* Rounded border */</span>
+  <span class="pl-ii">border: 2px solid #3b5bdb;</span>
+  <span class="pl-ii">animation: glow 1s ease-in-out infinite alternate;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.notification .grid-container {</span>
+  <span class="pl-ii">display: grid;</span>
+  <span class="pl-ii">grid-template-columns: auto auto;</span>
+  <span class="pl-ii">gap: 10px;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.notification .links {</span>
+  <span class="pl-ii">display: flex;</span>
+  <span class="pl-ii">justify-content: right;</span>
+  <span class="pl-ii">align-items: center;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.notification .links span {</span>
+  <span class="pl-ii">padding-bottom: 4px;</span>
+  <span class="pl-ii">opacity: 0.7;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.notification .links a, .notification .links span {</span>
+  <span class="pl-ii">display: block;</span>
+  <span class="pl-ii">color: white;</span>
+  <span class="pl-ii">font-size: 0.8rem;</span>
+  <span class="pl-ii">padding: 5px;</span>
+  <span class="pl-ii">margin-bottom: 5px;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.grid-item img {</span>
+  <span class="pl-ii">margin-top: 15px;</span>
+  <span class="pl-ii">margin-right: 5px;</span>
+  <span class="pl-ii">width: 32px;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.grid-item h3 {</span>
+  <span class="pl-ii">padding-top: 10px;</span>
+  <span class="pl-ii">padding-bottom: 3px;</span>
+  <span class="pl-ii">font-size: 1.5rem;</span>
+  <span class="pl-ii">color: white;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.grid-item p {</span>
+  <span class="pl-ii">font-style: italic;</span>
+  <span class="pl-ii">font-size: 1rem;</span>
+  <span class="pl-ii">color: white;</span>
+<span class="pl-ii">}</span>
+<span class="pl-ii">.grid-item p a {</span>
+  <span class="pl-ii">opacity: 1;</span>
+  <span class="pl-ii">font-weight: 600;</span>
+  <span class="pl-ii">text-decoration: underline !important;</span>
+  <span class="pl-ii">margin-bottom: 8px;</span>
+  <span class="pl-ii">display: inline-block;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">.grid-item h3, .grid-item p {</span>
+  <span class="pl-ii">margin: 0;</span>
+<span class="pl-ii">}</span>
+ 
+<span class="pl-ii">@keyframes glow {</span>
+  <span class="pl-ii">from {</span>
+    <span class="pl-ii">box-shadow: 0 0 10px #3b5bdb;</span>
+  <span class="pl-ii">}</span>
+  <span class="pl-ii">to {</span>
+    <span class="pl-ii">box-shadow: 0 0 20px #3b5bdb;</span>
+  <span class="pl-ii">}</span>
+<span class="pl-ii">}`;</span>
+ 
+  <span class="pl-ii">// src/notify-element.html</span>
+  <span class="pl-ii">var notify_element_default = '&lt;div id="bypass-notification" class="notification"&gt;\n    &lt;div class="grid-container"&gt;\n      &lt;div class="grid-item"&gt;\n        &lt;img height="32" src="https://bypass.city/images/android-chrome-192x192.png" alt="Notification"&gt;\n      &lt;/div&gt;\n      &lt;div class="grid-item"&gt;\n        &lt;h3 id="title"&gt;&lt;/h3&gt;\n        &lt;p&gt;\n            &lt;span id="text"&gt;&lt;/span&gt;\n            &lt;a id="help" href="https://discord.gg/tX8G9G5BMV"&gt;Get Support on our Discord&lt;/a&gt;\n        &lt;/p&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n   \n      &lt;div id="links" class="links"&gt;\n        &lt;span id="version"&gt;Release&lt;/span&gt;\n        &lt;span&gt;&amp;#8226;&lt;/span&gt;\n        &lt;a  href="https://discord.gg/tX8G9G5BMV"&gt;Get Support&lt;/a&gt;\n        &lt;span&gt;&amp;#8226;&lt;/span&gt;\n        &lt;a href="https://bypass.city/privacy"&gt;Privacy Policy&lt;/a&gt;\n      \n      &lt;/div&gt;\n  &lt;/div&gt;\n  ';</span>
+ 
+  <span class="pl-ii">// src/notify.ts</span>
+  <span class="pl-ii">var BypassElement = class extends HTMLElement {</span>
+    <span class="pl-ii">static get observedAttributes() {</span>
+      <span class="pl-ii">return ["text", "title", "is-help"];</span>
+    <span class="pl-ii">}</span>
+    <span class="pl-ii">constructor() {</span>
+      <span class="pl-ii">super();</span>
+      <span class="pl-ii">const shadow = this.attachShadow({ mode: "open" });</span>
+      <span class="pl-ii">const style = document.createElement("style");</span>
+      <span class="pl-ii">style.textContent = notify_default;</span>
+      <span class="pl-ii">const div = document.createElement("div");</span>
+      <span class="pl-ii">div.innerHTML = notify_element_default;</span>
+      <span class="pl-ii">shadow.appendChild(style);</span>
+      <span class="pl-ii">shadow.appendChild(div);</span>
+      <span class="pl-ii">shadow.getElementById("version").innerText = "鲨 js 1.0.0";</span>
+    <span class="pl-ii">}</span>
+    <span class="pl-ii">connectedCallback() {</span>
+      <span class="pl-ii">this.updateContent();</span>
+    <span class="pl-ii">}</span>
+    <span class="pl-ii">attributeChangedCallback(name, oldValue, newValue) {</span>
+      <span class="pl-ii">this.updateContent();</span>
+    <span class="pl-ii">}</span>
+    <span class="pl-ii">updateContent() {</span>
+      <span class="pl-ii">const text = this.getAttribute("text") || "";</span>
+      <span class="pl-ii">const title = this.getAttribute("title") || "";</span>
+      <span class="pl-ii">const isHelp = this.hasAttribute("is-help");</span>
+      <span class="pl-ii">if (isHelp) {</span>
+        <span class="pl-ii">this.shadowRoot.getElementById("links").remove();</span>
+      <span class="pl-ii">}</span>
+      <span class="pl-ii">this.shadowRoot.getElementById("help").style.display = isHelp ? "block" : "none";</span>
+      <span class="pl-ii">this.shadowRoot.querySelector("#title").textContent = title;</span>
+      <span class="pl-ii">this.shadowRoot.querySelector("#text").textContent = text;</span>
+    <span class="pl-ii">}</span>
+  <span class="pl-ii">};</span>
+  <span class="pl-ii">customElements.define("bypass-notification", BypassElement);</span>
+  <span class="pl-ii">var notify = ({ text, title, isHelp }) =&gt; {</span>
+    <span class="pl-ii">const titleContent = title || "跳验证正在加载...";</span>
+    <span class="pl-ii">const textContent = text || "稍等，会有一个网页跳转";</span>
+    <span class="pl-ii">const notificationElement = document.createElement("bypass-notification");</span>
+    <span class="pl-ii">notificationElement.setAttribute("title", titleContent);</span>
+    <span class="pl-ii">notificationElement.setAttribute("text", textContent);</span>
+    <span class="pl-ii">if (isHelp) {</span>
+      <span class="pl-ii">notificationElement.setAttribute("is-help", "true");</span>
+    <span class="pl-ii">}</span>
+    <span class="pl-ii">document.body.appendChild(notificationElement);</span>
+  <span class="pl-ii">};</span>
+ 
+  <span class="pl-ii">// src/fetch.ts</span>
+  <span class="pl-ii">var jsonFetch = async (url, options) =&gt; {</span>
+    <span class="pl-ii">return new Promise((resolve, reject) =&gt; {</span>
+      <span class="pl-ii">GM_xmlhttpRequest({</span>
+        <span class="pl-ii">method: options.method,</span>
+        <span class="pl-ii">data: options.data ? JSON.stringify(options.data) : void 0,</span>
+        <span class="pl-ii">headers: options.headers,</span>
+        <span class="pl-ii">url,</span>
+        <span class="pl-ii">onload: (response) =&gt; {</span>
+          <span class="pl-ii">if (response.responseText &amp;&amp; typeof response.responseText === "string") {</span>
+            <span class="pl-ii">try {</span>
+              <span class="pl-ii">const data = JSON.parse(response.responseText);</span>
+              <span class="pl-ii">resolve(data);</span>
+            <span class="pl-ii">} catch (e) {</span>
+              <span class="pl-ii">reject();</span>
+            <span class="pl-ii">}</span>
+          <span class="pl-ii">} else {</span>
+            <span class="pl-ii">reject();</span>
+          <span class="pl-ii">}</span>
+        <span class="pl-ii">},</span>
+        <span class="pl-ii">onerror: reject,</span>
+        <span class="pl-ii">ontimeout: reject,</span>
+        <span class="pl-ii">onabort: reject,</span>
+        <span class="pl-ii">timeout: 5e3</span>
+      <span class="pl-ii">});</span>
+    <span class="pl-ii">});</span>
+  <span class="pl-ii">};</span>
+ 
+  <span class="pl-ii">// src/ping.ts</span>
+  <span class="pl-ii">var ping = async () =&gt; {</span>
+    <span class="pl-ii">try {</span>
+      <span class="pl-ii">const data = await jsonFetch(`${"https://bypass.city"}/.well-known/ping.json`, {</span>
+        <span class="pl-ii">method: "GET",</span>
+        <span class="pl-ii">headers: {</span>
+          <span class="pl-ent">"Content-Type"</span>: <span class="pl-s"><span class="pl-pds">"</span>application/json<span class="pl-pds">"</span></span>
+        <span class="pl-ii">}</span>
+      <span class="pl-ii">});</span>
+      <span class="pl-ii">return data.ping;</span>
+    <span class="pl-ii">} catch (e) {</span>
+      <span class="pl-ii">notify({</span>
+        <span class="pl-ii">title: "无法访问服务器！",</span>
+        <span class="pl-ii">isHelp: true</span>
+      <span class="pl-ii">});</span>
+      <span class="pl-ii">return false;</span>
+    <span class="pl-ii">}</span>
+  <span class="pl-ii">};</span>
+ 
+  <span class="pl-ii">// src/utils.ts</span>
+  <span class="pl-ii">var sleep = (ms) =&gt; new Promise((resolve) =&gt; setTimeout(resolve, ms));</span>
+ 
+  <span class="pl-ii">// src/linkvertise.ts</span>
+  <span class="pl-ii">var linkvertiseListener = async () =&gt; {</span>
+    <span class="pl-ii">if (!matchLinkvertise(window.location.href)) {</span>
+      <span class="pl-ii">return;</span>
+    <span class="pl-ii">}</span>
+    <span class="pl-ii">const bypassData = GM_getValue("bypass.data");</span>
+    <span class="pl-ii">if (bypassData) {</span>
+      <span class="pl-ii">if (window.location.href.includes("linkvertise.com/48193/")) {</span>
+        <span class="pl-ii">notify({</span>
+          <span class="pl-ii">title: "发现KRNL!",</span>
+          <span class="pl-ii">text: "绕过krnl，请等待15秒\n以避免被列入黑名单！"</span>
+        <span class="pl-ii">});</span>
+        <span class="pl-ii">await sleep(15e3);</span>
+      <span class="pl-ii">} else {</span>
+        <span class="pl-ii">notify({});</span>
+        <span class="pl-ii">await sleep(2e3);</span>
+      <span class="pl-ii">}</span>
+      <span class="pl-ii">const targetUrl = bypassData.bypassData;</span>
+      <span class="pl-ii">GM_deleteValue("bypass.data");</span>
+      <span class="pl-ii">window.open(targetUrl, "_self");</span>
+    <span class="pl-ii">} else {</span>
+      <span class="pl-ii">const testConnectivity = await ping();</span>
+      <span class="pl-ii">if (testConnectivity) {</span>
+        <span class="pl-ii">notify({});</span>
+        <span class="pl-ii">await sleep(2e3);</span>
+        <span class="pl-ii">const bypassCityUrl = new URL(`${"https://bypass.city"}/bypass`);</span>
+        <span class="pl-ii">bypassCityUrl.searchParams.set("bypass", encodeURIComponent(window.location.href));</span>
+        <span class="pl-ii">bypassCityUrl.searchParams.set("userscript", "true");</span>
+        <span class="pl-ii">bypassCityUrl.searchParams.set("userscript-version", "11.0.6");</span>
+        <span class="pl-ii">window.open(bypassCityUrl.href, "_self");</span>
+      <span class="pl-ii">}</span>
+    <span class="pl-ii">}</span>
+  <span class="pl-ii">};</span>
+  <span class="pl-ii">var matchLinkvertise = (url) =&gt; {</span>
+    <span class="pl-ii">const regex = /https?:\/\/(linkvertise\.(com|download)|(link-(center|target|hub|to)|direct-link|file-link)\.net)/i;</span>
+    <span class="pl-ii">return regex.test(url) &amp;&amp; !url.startsWith("https://linkvertise.com/profile") &amp;&amp; !url.startsWith("https://linkvertise.com/login");</span>
+  <span class="pl-ii">};</span>
+ 
+  <span class="pl-ii">// src/main.ts</span>
+  <span class="pl-ii">(async () =&gt; {</span>
+    <span class="pl-ii">console.info("Linkvertise Userscript", "鲨 js 1.0.0", window.location.href);</span>
+    <span class="pl-ii">await bypassCityListener();</span>
+    <span class="pl-ii">await linkvertiseListener();</span>
+  <span class="pl-ii">})();</span>
+<span class="pl-ii">})();</span></pre></div></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://kssklol.github.io"> Shark Blog </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if("06/25/2024"!=""){
+    var now=new Date();
+    var startSite=new Date("06/25/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","kssklol/kssklol.github.io");
+    script.setAttribute("issue-term","title");
+    
+    script.setAttribute("theme","dark-blue");
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
