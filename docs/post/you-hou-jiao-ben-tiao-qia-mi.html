@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
     <link rel="icon" href="https://avatars.githubusercontent.com/u/165453323?s=400&u=314ab72b21552d28d4b8a4085563d3486dc017a0&v=4">
-<meta name="description" content="```json
+<meta name="description" content="```js
 // ==UserScript==
 // @name         [Working] shark json
 // @namespace    http://tampermonkey.net/
@@ -306,7 +306,7 @@ Linkvertise Bypass © 2023 by shark, suspect & bypass.city team
 })();
 ```。">
 <meta property="og:title" content="油猴脚本跳卡密">
-<meta property="og:description" content="```json
+<meta property="og:description" content="```js
 // ==UserScript==
 // @name         [Working] shark json
 // @namespace    http://tampermonkey.net/
@@ -663,303 +663,303 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><div class="highlight highlight-source-json"><pre class="notranslate"><span class="pl-ii">// ==UserScript==</span>
-<span class="pl-ii">// @name         [Working] shark json</span>
-<span class="pl-ii">// @namespace    http://tampermonkey.net/</span>
-<span class="pl-ii">// @homepageURL  https://bypass.city</span>
-<span class="pl-ii">// @description  just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)</span>
-<span class="pl-ii">// @author       Discord: varram#6209</span>
-<span class="pl-ii">// @match        *://*.linkvertise.com/*</span>
-<span class="pl-ii">// @match        *://*.linkvertise.net/*</span>
-<span class="pl-ii">// @match        *://*.link-to.net/*</span>
-<span class="pl-ii">// @match        *://bypass.city/*</span>
-<span class="pl-ii">// @match        http://localhost:3000/*</span>
-<span class="pl-ii">// @exclude      *://publisher.linkvertise.com/*</span>
-<span class="pl-ii">// @exclude      *://linkvertise.com</span>
-<span class="pl-ii">// @exclude      *://linkvertise.com/search*</span>
-<span class="pl-ii">// @exclude      *://blog.linkvertise.com</span>
-<span class="pl-ii">// @exclude      *://blog.linkvertise.com/*</span>
-<span class="pl-ii">// @exclude      https://linkvertise.com/assets/vendor/thinksuggest.html</span>
-<span class="pl-ii">// @exclude      https://linkvertise.com/assets/vendor/*</span>
-<span class="pl-ii">// @exclude      https://publisher.linkvertise.com/*</span>
-<span class="pl-ii">// @exclude      *://link-mutation.linkvertise.com/*</span>
-<span class="pl-ii">// @grant        GM_getValue</span>
-<span class="pl-ii">// @grant        GM_setValue</span>
-<span class="pl-ii">// @grant        GM_deleteValue</span>
-<span class="pl-ii">// @grant        GM_addStyle</span>
-<span class="pl-ii">// @grant        GM.getValue</span>
-<span class="pl-ii">// @grant        GM_xmlhttpRequest</span>
-<span class="pl-ii">// @grant        GM.setValue</span>
-<span class="pl-ii">// @grant        GM.deleteValue</span>
-<span class="pl-ii">// @version      11.0.6</span>
-<span class="pl-ii">// @author       varram</span>
-<span class="pl-ii">// @connect      bypass.city</span>
-<span class="pl-ii">// @icon         https://bypass.city/favicon.ico</span>
-<span class="pl-ii">// ==/UserScript==</span>
+<div class="markdown-body" id="postBody"><div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// ==UserScript==</span>
+<span class="pl-c">// @name         [Working] shark json</span>
+<span class="pl-c">// @namespace    http://tampermonkey.net/</span>
+<span class="pl-c">// @homepageURL  https://bypass.city</span>
+<span class="pl-c">// @description  just waits 15 seconds for krnl and works fine with the other stuff 2 (it waits no time for other stuff) :)</span>
+<span class="pl-c">// @author       Discord: varram#6209</span>
+<span class="pl-c">// @match        *://*.linkvertise.com/*</span>
+<span class="pl-c">// @match        *://*.linkvertise.net/*</span>
+<span class="pl-c">// @match        *://*.link-to.net/*</span>
+<span class="pl-c">// @match        *://bypass.city/*</span>
+<span class="pl-c">// @match        http://localhost:3000/*</span>
+<span class="pl-c">// @exclude      *://publisher.linkvertise.com/*</span>
+<span class="pl-c">// @exclude      *://linkvertise.com</span>
+<span class="pl-c">// @exclude      *://linkvertise.com/search*</span>
+<span class="pl-c">// @exclude      *://blog.linkvertise.com</span>
+<span class="pl-c">// @exclude      *://blog.linkvertise.com/*</span>
+<span class="pl-c">// @exclude      https://linkvertise.com/assets/vendor/thinksuggest.html</span>
+<span class="pl-c">// @exclude      https://linkvertise.com/assets/vendor/*</span>
+<span class="pl-c">// @exclude      https://publisher.linkvertise.com/*</span>
+<span class="pl-c">// @exclude      *://link-mutation.linkvertise.com/*</span>
+<span class="pl-c">// @grant        GM_getValue</span>
+<span class="pl-c">// @grant        GM_setValue</span>
+<span class="pl-c">// @grant        GM_deleteValue</span>
+<span class="pl-c">// @grant        GM_addStyle</span>
+<span class="pl-c">// @grant        GM.getValue</span>
+<span class="pl-c">// @grant        GM_xmlhttpRequest</span>
+<span class="pl-c">// @grant        GM.setValue</span>
+<span class="pl-c">// @grant        GM.deleteValue</span>
+<span class="pl-c">// @version      11.0.6</span>
+<span class="pl-c">// @author       varram</span>
+<span class="pl-c">// @connect      bypass.city</span>
+<span class="pl-c">// @icon         https://bypass.city/favicon.ico</span>
+<span class="pl-c">// ==/UserScript==</span>
  
  
-<span class="pl-ii">/* </span>
-<span class="pl-ii">release: sk json, 11/9/2023, 8:55:24 PM</span>
-<span class="pl-ii">additional copyright/license info:</span>
-<span class="pl-ii">© All Rights Reserved</span>
+<span class="pl-c">/* </span>
+<span class="pl-c">release: sk json, 11/9/2023, 8:55:24 PM</span>
+<span class="pl-c">additional copyright/license info:</span>
+<span class="pl-c">© All Rights Reserved</span>
+<span class="pl-c"> </span>
+<span class="pl-c">Linkvertise Bypass © 2023 by shark, suspect &amp; bypass.city team</span>
+<span class="pl-c">*/</span>
  
-<span class="pl-ii">Linkvertise Bypass © 2023 by shark, suspect &amp; bypass.city team</span>
-<span class="pl-ii">*/</span>
+<span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// src/bypass-city.ts</span>
+  <span class="pl-k">var</span> <span class="pl-en">bypassCityListener</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">hostname</span> <span class="pl-c1">!==</span> <span class="pl-s">"bypass.city"</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">hostname</span> <span class="pl-c1">!==</span> <span class="pl-s">"localhost"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-en">injectScriptInfo</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">"bypassComplete"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">;</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"bypassMessage"</span><span class="pl-kos">,</span> <span class="pl-s1">data</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-v">GM_setValue</span><span class="pl-kos">(</span><span class="pl-s">"bypass.data"</span><span class="pl-kos">,</span> <span class="pl-s1">data</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-en">open</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">url</span><span class="pl-kos">,</span> <span class="pl-s">"_self"</span><span class="pl-kos">,</span> <span class="pl-s">"noopener,noreferrer"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-k">var</span> <span class="pl-en">injectScriptInfo</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">injectJs</span> <span class="pl-c1">=</span> <span class="pl-s">`</span>
+<span class="pl-s">    window.scriptInfo = {</span>
+<span class="pl-s">        version: "<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s">"11.0.6"</span><span class="pl-kos">}</span></span>",</span>
+<span class="pl-s">        buildTime: "<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s">"11/9/2023, 7:39:06 PM"</span><span class="pl-kos">}</span></span>",</span>
+<span class="pl-s">        branch: "<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s">"release"</span><span class="pl-kos">}</span></span>",</span>
+<span class="pl-s">        release: "<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s">"5c96a51"</span><span class="pl-kos">}</span></span>",</span>
+<span class="pl-s">        installed: true,</span>
+<span class="pl-s">    }`</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">script</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"script"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s1">injectJs</span><span class="pl-kos">;</span>
+    <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">script</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
  
-<span class="pl-ii">(() =&gt; {</span>
-  <span class="pl-ii">// src/bypass-city.ts</span>
-  <span class="pl-ii">var bypassCityListener = async () =&gt; {</span>
-    <span class="pl-ii">if (window.location.hostname !== "bypass.city" &amp;&amp; window.location.hostname !== "localhost") {</span>
-      <span class="pl-ii">return;</span>
-    <span class="pl-ii">}</span>
-    <span class="pl-ii">injectScriptInfo();</span>
-    <span class="pl-ii">window.addEventListener("bypassComplete", async (event) =&gt; {</span>
-      <span class="pl-ii">const data = event.detail;</span>
-      <span class="pl-ii">console.log("bypassMessage", data);</span>
-      <span class="pl-ii">GM_setValue("bypass.data", data);</span>
-      <span class="pl-ii">window.open(data.url, "_self", "noopener,noreferrer");</span>
-    <span class="pl-ii">});</span>
-  <span class="pl-ii">};</span>
-  <span class="pl-ii">var injectScriptInfo = () =&gt; {</span>
-    <span class="pl-ii">const injectJs = `</span>
-    <span class="pl-ii">window.scriptInfo = {</span>
-        <span class="pl-ii">version: "${"11.0.6"}",</span>
-        <span class="pl-ii">buildTime: "${"11/9/2023, 7:39:06 PM"}",</span>
-        <span class="pl-ii">branch: "${"release"}",</span>
-        <span class="pl-ii">release: "${"5c96a51"}",</span>
-        <span class="pl-ii">installed: true,</span>
-    <span class="pl-ii">}`;</span>
-    <span class="pl-ii">const script = document.createElement("script");</span>
-    <span class="pl-ii">script.textContent = injectJs;</span>
-    <span class="pl-ii">document.body.appendChild(script);</span>
-  <span class="pl-ii">};</span>
+  <span class="pl-c">// src/notify.scss</span>
+  <span class="pl-k">var</span> <span class="pl-s1">notify_default</span> <span class="pl-c1">=</span> <span class="pl-s">`.notification {</span>
+<span class="pl-s">  position: fixed;</span>
+<span class="pl-s">  top: 10px;</span>
+<span class="pl-s">  right: 10px;</span>
+<span class="pl-s">  margin: 10px;</span>
+<span class="pl-s">  padding: 10px;</span>
+<span class="pl-s">  padding-right: 20px;</span>
+<span class="pl-s">  background-color: #25262b;</span>
+<span class="pl-s">  color: white;</span>
+<span class="pl-s">  transition: opacity 0.6s; /* 600ms to fade out */</span>
+<span class="pl-s">  z-index: 4000000;</span>
+<span class="pl-s">  border-radius: 10px; /* Rounded border */</span>
+<span class="pl-s">  border: 2px solid #3b5bdb;</span>
+<span class="pl-s">  animation: glow 1s ease-in-out infinite alternate;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.notification .grid-container {</span>
+<span class="pl-s">  display: grid;</span>
+<span class="pl-s">  grid-template-columns: auto auto;</span>
+<span class="pl-s">  gap: 10px;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.notification .links {</span>
+<span class="pl-s">  display: flex;</span>
+<span class="pl-s">  justify-content: right;</span>
+<span class="pl-s">  align-items: center;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.notification .links span {</span>
+<span class="pl-s">  padding-bottom: 4px;</span>
+<span class="pl-s">  opacity: 0.7;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.notification .links a, .notification .links span {</span>
+<span class="pl-s">  display: block;</span>
+<span class="pl-s">  color: white;</span>
+<span class="pl-s">  font-size: 0.8rem;</span>
+<span class="pl-s">  padding: 5px;</span>
+<span class="pl-s">  margin-bottom: 5px;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.grid-item img {</span>
+<span class="pl-s">  margin-top: 15px;</span>
+<span class="pl-s">  margin-right: 5px;</span>
+<span class="pl-s">  width: 32px;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.grid-item h3 {</span>
+<span class="pl-s">  padding-top: 10px;</span>
+<span class="pl-s">  padding-bottom: 3px;</span>
+<span class="pl-s">  font-size: 1.5rem;</span>
+<span class="pl-s">  color: white;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.grid-item p {</span>
+<span class="pl-s">  font-style: italic;</span>
+<span class="pl-s">  font-size: 1rem;</span>
+<span class="pl-s">  color: white;</span>
+<span class="pl-s">}</span>
+<span class="pl-s">.grid-item p a {</span>
+<span class="pl-s">  opacity: 1;</span>
+<span class="pl-s">  font-weight: 600;</span>
+<span class="pl-s">  text-decoration: underline !important;</span>
+<span class="pl-s">  margin-bottom: 8px;</span>
+<span class="pl-s">  display: inline-block;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">.grid-item h3, .grid-item p {</span>
+<span class="pl-s">  margin: 0;</span>
+<span class="pl-s">}</span>
+<span class="pl-s"> </span>
+<span class="pl-s">@keyframes glow {</span>
+<span class="pl-s">  from {</span>
+<span class="pl-s">    box-shadow: 0 0 10px #3b5bdb;</span>
+<span class="pl-s">  }</span>
+<span class="pl-s">  to {</span>
+<span class="pl-s">    box-shadow: 0 0 20px #3b5bdb;</span>
+<span class="pl-s">  }</span>
+<span class="pl-s">}`</span><span class="pl-kos">;</span>
  
-  <span class="pl-ii">// src/notify.scss</span>
-  <span class="pl-ii">var notify_default = `.notification {</span>
-  <span class="pl-ii">position: fixed;</span>
-  <span class="pl-ii">top: 10px;</span>
-  <span class="pl-ii">right: 10px;</span>
-  <span class="pl-ii">margin: 10px;</span>
-  <span class="pl-ii">padding: 10px;</span>
-  <span class="pl-ii">padding-right: 20px;</span>
-  <span class="pl-ii">background-color: #25262b;</span>
-  <span class="pl-ii">color: white;</span>
-  <span class="pl-ii">transition: opacity 0.6s; /* 600ms to fade out */</span>
-  <span class="pl-ii">z-index: 4000000;</span>
-  <span class="pl-ii">border-radius: 10px; /* Rounded border */</span>
-  <span class="pl-ii">border: 2px solid #3b5bdb;</span>
-  <span class="pl-ii">animation: glow 1s ease-in-out infinite alternate;</span>
-<span class="pl-ii">}</span>
+  <span class="pl-c">// src/notify-element.html</span>
+  <span class="pl-k">var</span> <span class="pl-s1">notify_element_default</span> <span class="pl-c1">=</span> <span class="pl-s">'&lt;div id="bypass-notification" class="notification"&gt;\n    &lt;div class="grid-container"&gt;\n      &lt;div class="grid-item"&gt;\n        &lt;img height="32" src="https://bypass.city/images/android-chrome-192x192.png" alt="Notification"&gt;\n      &lt;/div&gt;\n      &lt;div class="grid-item"&gt;\n        &lt;h3 id="title"&gt;&lt;/h3&gt;\n        &lt;p&gt;\n            &lt;span id="text"&gt;&lt;/span&gt;\n            &lt;a id="help" href="https://discord.gg/tX8G9G5BMV"&gt;Get Support on our Discord&lt;/a&gt;\n        &lt;/p&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n   \n      &lt;div id="links" class="links"&gt;\n        &lt;span id="version"&gt;Release&lt;/span&gt;\n        &lt;span&gt;&amp;#8226;&lt;/span&gt;\n        &lt;a  href="https://discord.gg/tX8G9G5BMV"&gt;Get Support&lt;/a&gt;\n        &lt;span&gt;&amp;#8226;&lt;/span&gt;\n        &lt;a href="https://bypass.city/privacy"&gt;Privacy Policy&lt;/a&gt;\n      \n      &lt;/div&gt;\n  &lt;/div&gt;\n  '</span><span class="pl-kos">;</span>
  
-<span class="pl-ii">.notification .grid-container {</span>
-  <span class="pl-ii">display: grid;</span>
-  <span class="pl-ii">grid-template-columns: auto auto;</span>
-  <span class="pl-ii">gap: 10px;</span>
-<span class="pl-ii">}</span>
+  <span class="pl-c">// src/notify.ts</span>
+  <span class="pl-k">var</span> <span class="pl-v">BypassElement</span> <span class="pl-c1">=</span> <span class="pl-k">class</span> <span class="pl-k">extends</span> <span class="pl-v">HTMLElement</span> <span class="pl-kos">{</span>
+    <span class="pl-k">static</span> <span class="pl-k">get</span> <span class="pl-en">observedAttributes</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-s">"text"</span><span class="pl-kos">,</span> <span class="pl-s">"title"</span><span class="pl-kos">,</span> <span class="pl-s">"is-help"</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">const</span> <span class="pl-s1">shadow</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">attachShadow</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">mode</span>: <span class="pl-s">"open"</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">const</span> <span class="pl-s1">style</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"style"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">style</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s1">notify_default</span><span class="pl-kos">;</span>
+      <span class="pl-k">const</span> <span class="pl-s1">div</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"div"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">div</span><span class="pl-kos">.</span><span class="pl-c1">innerHTML</span> <span class="pl-c1">=</span> <span class="pl-s1">notify_element_default</span><span class="pl-kos">;</span>
+      <span class="pl-s1">shadow</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">style</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">shadow</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">div</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">shadow</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"version"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">innerText</span> <span class="pl-c1">=</span> <span class="pl-s">"鲨 js 1.0.0"</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-en">connectedCallback</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">updateContent</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-en">attributeChangedCallback</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">,</span> <span class="pl-s1">oldValue</span><span class="pl-kos">,</span> <span class="pl-s1">newValue</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">updateContent</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-en">updateContent</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">text</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getAttribute</span><span class="pl-kos">(</span><span class="pl-s">"text"</span><span class="pl-kos">)</span> <span class="pl-c1">||</span> <span class="pl-s">""</span><span class="pl-kos">;</span>
+      <span class="pl-k">const</span> <span class="pl-s1">title</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getAttribute</span><span class="pl-kos">(</span><span class="pl-s">"title"</span><span class="pl-kos">)</span> <span class="pl-c1">||</span> <span class="pl-s">""</span><span class="pl-kos">;</span>
+      <span class="pl-k">const</span> <span class="pl-s1">isHelp</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">hasAttribute</span><span class="pl-kos">(</span><span class="pl-s">"is-help"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isHelp</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">shadowRoot</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"links"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">remove</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">shadowRoot</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">"help"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-c1">display</span> <span class="pl-c1">=</span> <span class="pl-s1">isHelp</span> ? <span class="pl-s">"block"</span> : <span class="pl-s">"none"</span><span class="pl-kos">;</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">shadowRoot</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">"#title"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s1">title</span><span class="pl-kos">;</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">shadowRoot</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">"#text"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s1">text</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-s1">customElements</span><span class="pl-kos">.</span><span class="pl-en">define</span><span class="pl-kos">(</span><span class="pl-s">"bypass-notification"</span><span class="pl-kos">,</span> <span class="pl-v">BypassElement</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">var</span> <span class="pl-en">notify</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">{</span> text<span class="pl-kos">,</span> title<span class="pl-kos">,</span> isHelp <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">titleContent</span> <span class="pl-c1">=</span> <span class="pl-s1">title</span> <span class="pl-c1">||</span> <span class="pl-s">"跳验证正在加载..."</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">textContent</span> <span class="pl-c1">=</span> <span class="pl-s1">text</span> <span class="pl-c1">||</span> <span class="pl-s">"稍等，会有一个网页跳转"</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">notificationElement</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"bypass-notification"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">notificationElement</span><span class="pl-kos">.</span><span class="pl-en">setAttribute</span><span class="pl-kos">(</span><span class="pl-s">"title"</span><span class="pl-kos">,</span> <span class="pl-s1">titleContent</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">notificationElement</span><span class="pl-kos">.</span><span class="pl-en">setAttribute</span><span class="pl-kos">(</span><span class="pl-s">"text"</span><span class="pl-kos">,</span> <span class="pl-s1">textContent</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isHelp</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">notificationElement</span><span class="pl-kos">.</span><span class="pl-en">setAttribute</span><span class="pl-kos">(</span><span class="pl-s">"is-help"</span><span class="pl-kos">,</span> <span class="pl-s">"true"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">notificationElement</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
  
-<span class="pl-ii">.notification .links {</span>
-  <span class="pl-ii">display: flex;</span>
-  <span class="pl-ii">justify-content: right;</span>
-  <span class="pl-ii">align-items: center;</span>
-<span class="pl-ii">}</span>
+  <span class="pl-c">// src/fetch.ts</span>
+  <span class="pl-k">var</span> <span class="pl-en">jsonFetch</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span> <span class="pl-s1">reject</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+      <span class="pl-v">GM_xmlhttpRequest</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">method</span>: <span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">method</span><span class="pl-kos">,</span>
+        <span class="pl-c1">data</span>: <span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">data</span> ? <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">)</span> : <span class="pl-k">void</span> <span class="pl-c1">0</span><span class="pl-kos">,</span>
+        <span class="pl-c1">headers</span>: <span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">headers</span><span class="pl-kos">,</span>
+        url<span class="pl-kos">,</span>
+        <span class="pl-en">onload</span>: <span class="pl-kos">(</span><span class="pl-s1">response</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+          <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">response</span><span class="pl-kos">.</span><span class="pl-c1">responseText</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-k">typeof</span> <span class="pl-s1">response</span><span class="pl-kos">.</span><span class="pl-c1">responseText</span> <span class="pl-c1">===</span> <span class="pl-s">"string"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-k">try</span> <span class="pl-kos">{</span>
+              <span class="pl-k">const</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">parse</span><span class="pl-kos">(</span><span class="pl-s1">response</span><span class="pl-kos">.</span><span class="pl-c1">responseText</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+              <span class="pl-s1">resolve</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+            <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+              <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+            <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">onerror</span>: <span class="pl-s1">reject</span><span class="pl-kos">,</span>
+        <span class="pl-c1">ontimeout</span>: <span class="pl-s1">reject</span><span class="pl-kos">,</span>
+        <span class="pl-c1">onabort</span>: <span class="pl-s1">reject</span><span class="pl-kos">,</span>
+        <span class="pl-c1">timeout</span>: <span class="pl-c1">5e3</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
  
-<span class="pl-ii">.notification .links span {</span>
-  <span class="pl-ii">padding-bottom: 4px;</span>
-  <span class="pl-ii">opacity: 0.7;</span>
-<span class="pl-ii">}</span>
+  <span class="pl-c">// src/ping.ts</span>
+  <span class="pl-k">var</span> <span class="pl-en">ping</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">try</span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-en">jsonFetch</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s">"https://bypass.city"</span><span class="pl-kos">}</span></span>/.well-known/ping.json`</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">method</span>: <span class="pl-s">"GET"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">headers</span>: <span class="pl-kos">{</span>
+          <span class="pl-s">"Content-Type"</span>: <span class="pl-s">"application/json"</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">return</span> <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">ping</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-en">notify</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">title</span>: <span class="pl-s">"无法访问服务器！"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">isHelp</span>: <span class="pl-c1">true</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">return</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
  
-<span class="pl-ii">.notification .links a, .notification .links span {</span>
-  <span class="pl-ii">display: block;</span>
-  <span class="pl-ii">color: white;</span>
-  <span class="pl-ii">font-size: 0.8rem;</span>
-  <span class="pl-ii">padding: 5px;</span>
-  <span class="pl-ii">margin-bottom: 5px;</span>
-<span class="pl-ii">}</span>
+  <span class="pl-c">// src/utils.ts</span>
+  <span class="pl-k">var</span> <span class="pl-en">sleep</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">ms</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span> <span class="pl-s1">ms</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
  
-<span class="pl-ii">.grid-item img {</span>
-  <span class="pl-ii">margin-top: 15px;</span>
-  <span class="pl-ii">margin-right: 5px;</span>
-  <span class="pl-ii">width: 32px;</span>
-<span class="pl-ii">}</span>
+  <span class="pl-c">// src/linkvertise.ts</span>
+  <span class="pl-k">var</span> <span class="pl-en">linkvertiseListener</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-en">matchLinkvertise</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">href</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">const</span> <span class="pl-s1">bypassData</span> <span class="pl-c1">=</span> <span class="pl-v">GM_getValue</span><span class="pl-kos">(</span><span class="pl-s">"bypass.data"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">bypassData</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">href</span><span class="pl-kos">.</span><span class="pl-en">includes</span><span class="pl-kos">(</span><span class="pl-s">"linkvertise.com/48193/"</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-en">notify</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">title</span>: <span class="pl-s">"发现KRNL!"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">text</span>: <span class="pl-s">"绕过krnl，请等待15秒\n以避免被列入黑名单！"</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-k">await</span> <span class="pl-en">sleep</span><span class="pl-kos">(</span><span class="pl-c1">15e3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+        <span class="pl-en">notify</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-k">await</span> <span class="pl-en">sleep</span><span class="pl-kos">(</span><span class="pl-c1">2e3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+      <span class="pl-k">const</span> <span class="pl-s1">targetUrl</span> <span class="pl-c1">=</span> <span class="pl-s1">bypassData</span><span class="pl-kos">.</span><span class="pl-c1">bypassData</span><span class="pl-kos">;</span>
+      <span class="pl-v">GM_deleteValue</span><span class="pl-kos">(</span><span class="pl-s">"bypass.data"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-en">open</span><span class="pl-kos">(</span><span class="pl-s1">targetUrl</span><span class="pl-kos">,</span> <span class="pl-s">"_self"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">testConnectivity</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-en">ping</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">testConnectivity</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-en">notify</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-k">await</span> <span class="pl-en">sleep</span><span class="pl-kos">(</span><span class="pl-c1">2e3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-k">const</span> <span class="pl-s1">bypassCityUrl</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-c1">URL</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s">"https://bypass.city"</span><span class="pl-kos">}</span></span>/bypass`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-s1">bypassCityUrl</span><span class="pl-kos">.</span><span class="pl-c1">searchParams</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s">"bypass"</span><span class="pl-kos">,</span> <span class="pl-en">encodeURIComponent</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">href</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-s1">bypassCityUrl</span><span class="pl-kos">.</span><span class="pl-c1">searchParams</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s">"userscript"</span><span class="pl-kos">,</span> <span class="pl-s">"true"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-s1">bypassCityUrl</span><span class="pl-kos">.</span><span class="pl-c1">searchParams</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s">"userscript-version"</span><span class="pl-kos">,</span> <span class="pl-s">"11.0.6"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-en">open</span><span class="pl-kos">(</span><span class="pl-s1">bypassCityUrl</span><span class="pl-kos">.</span><span class="pl-c1">href</span><span class="pl-kos">,</span> <span class="pl-s">"_self"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-k">var</span> <span class="pl-en">matchLinkvertise</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">regex</span> <span class="pl-c1">=</span> <span class="pl-pds"><span class="pl-c1">/</span>https?:\/\/(linkvertise\.(com|download)|(link-(center|target|hub|to)|direct-link|file-link)\.net)<span class="pl-c1">/</span>i</span><span class="pl-kos">;</span>
+    <span class="pl-k">return</span> <span class="pl-s1">regex</span><span class="pl-kos">.</span><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">)</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-c1">!</span><span class="pl-s1">url</span><span class="pl-kos">.</span><span class="pl-en">startsWith</span><span class="pl-kos">(</span><span class="pl-s">"https://linkvertise.com/profile"</span><span class="pl-kos">)</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-c1">!</span><span class="pl-s1">url</span><span class="pl-kos">.</span><span class="pl-en">startsWith</span><span class="pl-kos">(</span><span class="pl-s">"https://linkvertise.com/login"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
  
-<span class="pl-ii">.grid-item h3 {</span>
-  <span class="pl-ii">padding-top: 10px;</span>
-  <span class="pl-ii">padding-bottom: 3px;</span>
-  <span class="pl-ii">font-size: 1.5rem;</span>
-  <span class="pl-ii">color: white;</span>
-<span class="pl-ii">}</span>
- 
-<span class="pl-ii">.grid-item p {</span>
-  <span class="pl-ii">font-style: italic;</span>
-  <span class="pl-ii">font-size: 1rem;</span>
-  <span class="pl-ii">color: white;</span>
-<span class="pl-ii">}</span>
-<span class="pl-ii">.grid-item p a {</span>
-  <span class="pl-ii">opacity: 1;</span>
-  <span class="pl-ii">font-weight: 600;</span>
-  <span class="pl-ii">text-decoration: underline !important;</span>
-  <span class="pl-ii">margin-bottom: 8px;</span>
-  <span class="pl-ii">display: inline-block;</span>
-<span class="pl-ii">}</span>
- 
-<span class="pl-ii">.grid-item h3, .grid-item p {</span>
-  <span class="pl-ii">margin: 0;</span>
-<span class="pl-ii">}</span>
- 
-<span class="pl-ii">@keyframes glow {</span>
-  <span class="pl-ii">from {</span>
-    <span class="pl-ii">box-shadow: 0 0 10px #3b5bdb;</span>
-  <span class="pl-ii">}</span>
-  <span class="pl-ii">to {</span>
-    <span class="pl-ii">box-shadow: 0 0 20px #3b5bdb;</span>
-  <span class="pl-ii">}</span>
-<span class="pl-ii">}`;</span>
- 
-  <span class="pl-ii">// src/notify-element.html</span>
-  <span class="pl-ii">var notify_element_default = '&lt;div id="bypass-notification" class="notification"&gt;\n    &lt;div class="grid-container"&gt;\n      &lt;div class="grid-item"&gt;\n        &lt;img height="32" src="https://bypass.city/images/android-chrome-192x192.png" alt="Notification"&gt;\n      &lt;/div&gt;\n      &lt;div class="grid-item"&gt;\n        &lt;h3 id="title"&gt;&lt;/h3&gt;\n        &lt;p&gt;\n            &lt;span id="text"&gt;&lt;/span&gt;\n            &lt;a id="help" href="https://discord.gg/tX8G9G5BMV"&gt;Get Support on our Discord&lt;/a&gt;\n        &lt;/p&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n   \n      &lt;div id="links" class="links"&gt;\n        &lt;span id="version"&gt;Release&lt;/span&gt;\n        &lt;span&gt;&amp;#8226;&lt;/span&gt;\n        &lt;a  href="https://discord.gg/tX8G9G5BMV"&gt;Get Support&lt;/a&gt;\n        &lt;span&gt;&amp;#8226;&lt;/span&gt;\n        &lt;a href="https://bypass.city/privacy"&gt;Privacy Policy&lt;/a&gt;\n      \n      &lt;/div&gt;\n  &lt;/div&gt;\n  ';</span>
- 
-  <span class="pl-ii">// src/notify.ts</span>
-  <span class="pl-ii">var BypassElement = class extends HTMLElement {</span>
-    <span class="pl-ii">static get observedAttributes() {</span>
-      <span class="pl-ii">return ["text", "title", "is-help"];</span>
-    <span class="pl-ii">}</span>
-    <span class="pl-ii">constructor() {</span>
-      <span class="pl-ii">super();</span>
-      <span class="pl-ii">const shadow = this.attachShadow({ mode: "open" });</span>
-      <span class="pl-ii">const style = document.createElement("style");</span>
-      <span class="pl-ii">style.textContent = notify_default;</span>
-      <span class="pl-ii">const div = document.createElement("div");</span>
-      <span class="pl-ii">div.innerHTML = notify_element_default;</span>
-      <span class="pl-ii">shadow.appendChild(style);</span>
-      <span class="pl-ii">shadow.appendChild(div);</span>
-      <span class="pl-ii">shadow.getElementById("version").innerText = "鲨 js 1.0.0";</span>
-    <span class="pl-ii">}</span>
-    <span class="pl-ii">connectedCallback() {</span>
-      <span class="pl-ii">this.updateContent();</span>
-    <span class="pl-ii">}</span>
-    <span class="pl-ii">attributeChangedCallback(name, oldValue, newValue) {</span>
-      <span class="pl-ii">this.updateContent();</span>
-    <span class="pl-ii">}</span>
-    <span class="pl-ii">updateContent() {</span>
-      <span class="pl-ii">const text = this.getAttribute("text") || "";</span>
-      <span class="pl-ii">const title = this.getAttribute("title") || "";</span>
-      <span class="pl-ii">const isHelp = this.hasAttribute("is-help");</span>
-      <span class="pl-ii">if (isHelp) {</span>
-        <span class="pl-ii">this.shadowRoot.getElementById("links").remove();</span>
-      <span class="pl-ii">}</span>
-      <span class="pl-ii">this.shadowRoot.getElementById("help").style.display = isHelp ? "block" : "none";</span>
-      <span class="pl-ii">this.shadowRoot.querySelector("#title").textContent = title;</span>
-      <span class="pl-ii">this.shadowRoot.querySelector("#text").textContent = text;</span>
-    <span class="pl-ii">}</span>
-  <span class="pl-ii">};</span>
-  <span class="pl-ii">customElements.define("bypass-notification", BypassElement);</span>
-  <span class="pl-ii">var notify = ({ text, title, isHelp }) =&gt; {</span>
-    <span class="pl-ii">const titleContent = title || "跳验证正在加载...";</span>
-    <span class="pl-ii">const textContent = text || "稍等，会有一个网页跳转";</span>
-    <span class="pl-ii">const notificationElement = document.createElement("bypass-notification");</span>
-    <span class="pl-ii">notificationElement.setAttribute("title", titleContent);</span>
-    <span class="pl-ii">notificationElement.setAttribute("text", textContent);</span>
-    <span class="pl-ii">if (isHelp) {</span>
-      <span class="pl-ii">notificationElement.setAttribute("is-help", "true");</span>
-    <span class="pl-ii">}</span>
-    <span class="pl-ii">document.body.appendChild(notificationElement);</span>
-  <span class="pl-ii">};</span>
- 
-  <span class="pl-ii">// src/fetch.ts</span>
-  <span class="pl-ii">var jsonFetch = async (url, options) =&gt; {</span>
-    <span class="pl-ii">return new Promise((resolve, reject) =&gt; {</span>
-      <span class="pl-ii">GM_xmlhttpRequest({</span>
-        <span class="pl-ii">method: options.method,</span>
-        <span class="pl-ii">data: options.data ? JSON.stringify(options.data) : void 0,</span>
-        <span class="pl-ii">headers: options.headers,</span>
-        <span class="pl-ii">url,</span>
-        <span class="pl-ii">onload: (response) =&gt; {</span>
-          <span class="pl-ii">if (response.responseText &amp;&amp; typeof response.responseText === "string") {</span>
-            <span class="pl-ii">try {</span>
-              <span class="pl-ii">const data = JSON.parse(response.responseText);</span>
-              <span class="pl-ii">resolve(data);</span>
-            <span class="pl-ii">} catch (e) {</span>
-              <span class="pl-ii">reject();</span>
-            <span class="pl-ii">}</span>
-          <span class="pl-ii">} else {</span>
-            <span class="pl-ii">reject();</span>
-          <span class="pl-ii">}</span>
-        <span class="pl-ii">},</span>
-        <span class="pl-ii">onerror: reject,</span>
-        <span class="pl-ii">ontimeout: reject,</span>
-        <span class="pl-ii">onabort: reject,</span>
-        <span class="pl-ii">timeout: 5e3</span>
-      <span class="pl-ii">});</span>
-    <span class="pl-ii">});</span>
-  <span class="pl-ii">};</span>
- 
-  <span class="pl-ii">// src/ping.ts</span>
-  <span class="pl-ii">var ping = async () =&gt; {</span>
-    <span class="pl-ii">try {</span>
-      <span class="pl-ii">const data = await jsonFetch(`${"https://bypass.city"}/.well-known/ping.json`, {</span>
-        <span class="pl-ii">method: "GET",</span>
-        <span class="pl-ii">headers: {</span>
-          <span class="pl-ent">"Content-Type"</span>: <span class="pl-s"><span class="pl-pds">"</span>application/json<span class="pl-pds">"</span></span>
-        <span class="pl-ii">}</span>
-      <span class="pl-ii">});</span>
-      <span class="pl-ii">return data.ping;</span>
-    <span class="pl-ii">} catch (e) {</span>
-      <span class="pl-ii">notify({</span>
-        <span class="pl-ii">title: "无法访问服务器！",</span>
-        <span class="pl-ii">isHelp: true</span>
-      <span class="pl-ii">});</span>
-      <span class="pl-ii">return false;</span>
-    <span class="pl-ii">}</span>
-  <span class="pl-ii">};</span>
- 
-  <span class="pl-ii">// src/utils.ts</span>
-  <span class="pl-ii">var sleep = (ms) =&gt; new Promise((resolve) =&gt; setTimeout(resolve, ms));</span>
- 
-  <span class="pl-ii">// src/linkvertise.ts</span>
-  <span class="pl-ii">var linkvertiseListener = async () =&gt; {</span>
-    <span class="pl-ii">if (!matchLinkvertise(window.location.href)) {</span>
-      <span class="pl-ii">return;</span>
-    <span class="pl-ii">}</span>
-    <span class="pl-ii">const bypassData = GM_getValue("bypass.data");</span>
-    <span class="pl-ii">if (bypassData) {</span>
-      <span class="pl-ii">if (window.location.href.includes("linkvertise.com/48193/")) {</span>
-        <span class="pl-ii">notify({</span>
-          <span class="pl-ii">title: "发现KRNL!",</span>
-          <span class="pl-ii">text: "绕过krnl，请等待15秒\n以避免被列入黑名单！"</span>
-        <span class="pl-ii">});</span>
-        <span class="pl-ii">await sleep(15e3);</span>
-      <span class="pl-ii">} else {</span>
-        <span class="pl-ii">notify({});</span>
-        <span class="pl-ii">await sleep(2e3);</span>
-      <span class="pl-ii">}</span>
-      <span class="pl-ii">const targetUrl = bypassData.bypassData;</span>
-      <span class="pl-ii">GM_deleteValue("bypass.data");</span>
-      <span class="pl-ii">window.open(targetUrl, "_self");</span>
-    <span class="pl-ii">} else {</span>
-      <span class="pl-ii">const testConnectivity = await ping();</span>
-      <span class="pl-ii">if (testConnectivity) {</span>
-        <span class="pl-ii">notify({});</span>
-        <span class="pl-ii">await sleep(2e3);</span>
-        <span class="pl-ii">const bypassCityUrl = new URL(`${"https://bypass.city"}/bypass`);</span>
-        <span class="pl-ii">bypassCityUrl.searchParams.set("bypass", encodeURIComponent(window.location.href));</span>
-        <span class="pl-ii">bypassCityUrl.searchParams.set("userscript", "true");</span>
-        <span class="pl-ii">bypassCityUrl.searchParams.set("userscript-version", "11.0.6");</span>
-        <span class="pl-ii">window.open(bypassCityUrl.href, "_self");</span>
-      <span class="pl-ii">}</span>
-    <span class="pl-ii">}</span>
-  <span class="pl-ii">};</span>
-  <span class="pl-ii">var matchLinkvertise = (url) =&gt; {</span>
-    <span class="pl-ii">const regex = /https?:\/\/(linkvertise\.(com|download)|(link-(center|target|hub|to)|direct-link|file-link)\.net)/i;</span>
-    <span class="pl-ii">return regex.test(url) &amp;&amp; !url.startsWith("https://linkvertise.com/profile") &amp;&amp; !url.startsWith("https://linkvertise.com/login");</span>
-  <span class="pl-ii">};</span>
- 
-  <span class="pl-ii">// src/main.ts</span>
-  <span class="pl-ii">(async () =&gt; {</span>
-    <span class="pl-ii">console.info("Linkvertise Userscript", "鲨 js 1.0.0", window.location.href);</span>
-    <span class="pl-ii">await bypassCityListener();</span>
-    <span class="pl-ii">await linkvertiseListener();</span>
-  <span class="pl-ii">})();</span>
-<span class="pl-ii">})();</span></pre></div></div>
+  <span class="pl-c">// src/main.ts</span>
+  <span class="pl-kos">(</span><span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">info</span><span class="pl-kos">(</span><span class="pl-s">"Linkvertise Userscript"</span><span class="pl-kos">,</span> <span class="pl-s">"鲨 js 1.0.0"</span><span class="pl-kos">,</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">.</span><span class="pl-c1">href</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">await</span> <span class="pl-en">bypassCityListener</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">await</span> <span class="pl-en">linkvertiseListener</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
