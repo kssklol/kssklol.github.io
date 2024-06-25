@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Shark Blog</title><link>https://kssklol.github.io</link><description>emmm... 你好？
-这是我的脚本群QQ:728293118</description><copyright>Shark Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/165453323?s=400&amp;u=314ab72b21552d28d4b8a4085563d3486dc017a0&amp;v=4</url><title>avatar</title><link>https://kssklol.github.io</link></image><lastBuildDate>Tue, 25 Jun 2024 10:23:29 +0000</lastBuildDate><managingEditor>Shark Blog</managingEditor><ttl>60</ttl><webMaster>Shark Blog</webMaster><item><title>注入器函数</title><link>https://kssklol.github.io/post/zhu-ru-qi-han-shu.html</link><description>_增加了一些注入器缺少的函数_&#13;
+这是我的脚本群QQ:728293118</description><copyright>Shark Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/165453323?s=400&amp;u=314ab72b21552d28d4b8a4085563d3486dc017a0&amp;v=4</url><title>avatar</title><link>https://kssklol.github.io</link></image><lastBuildDate>Tue, 25 Jun 2024 10:24:49 +0000</lastBuildDate><managingEditor>Shark Blog</managingEditor><ttl>60</ttl><webMaster>Shark Blog</webMaster><item><title>注入器函数</title><link>https://kssklol.github.io/post/zhu-ru-qi-han-shu.html</link><description>**增加了一些注入器缺少的函数**&#13;
 &#13;
 以下是函数：&#13;
 &gt;debug.getinfo&#13;
