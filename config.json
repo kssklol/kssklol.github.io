@@ -14,5 +14,6 @@
     "bottomText":"Hello",
     "onePageListNum":10,
     "startSite":"06/25/2024",
-    "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>"
+    "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>",
+    "logEnabled": true
 }
